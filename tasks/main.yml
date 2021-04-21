@@ -8,6 +8,9 @@
       - git-doc
       - gitk
       - meld
+      # needed to install github cli
+      - dirmngr
+      - apt-transport-https
 - name: Set up git configuration
   git_config:
     name: "{{ item.key }}"
@@ -36,6 +39,26 @@
         source /opt/bash-git-prompt/gitprompt.sh
       fi
   become: no
+- name: Add Github apt signing key on remote server to keyring
+  apt_key:
+    id: C99B11DEB97541F0
+    keyserver: keyserver.ubuntu.com
+  tags: gh_cli
+- name: Extract distribution base name (works on linux mint as well)
+  command: grep -oP '{{ "UBUNTU" if ansible_distribution == "Ubuntu" else "VERSION" }}_CODENAME=\K.*' /etc/os-release
+  register: distro
+  changed_when: False
+  tags: gh_cli
+- name: Add apt repo for github
+  apt_repository:
+    repo: deb https://cli.github.com/packages {{ distro.stdout }} main
+    state: present
+  tags: gh_cli
+- name: Install github cli (gh) package
+  apt:
+    pkg:
+      - gh
+  tags: gh_cli
 - name: Install hub
   unarchive:
     src: "https://github.com/github/hub/releases/download/v{{ hub_version }}/hub-linux-amd64-{{ hub_version }}.tgz"
