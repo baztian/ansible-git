@@ -45,7 +45,7 @@
     keyserver: keyserver.ubuntu.com
   tags: gh_cli
 - name: Extract distribution base name (works on linux mint as well)
-  command: grep -oP '{{ "UBUNTU" if ansible_distribution == "Ubuntu" else "VERSION" }}_CODENAME=\K.*' /etc/os-release
+  command: grep -oP '{{ "VERSION" if ansible_distribution == "Debian" else "UBUNTU" }}_CODENAME=\K.*' /etc/os-release
   register: distro
   changed_when: False
   tags: gh_cli
