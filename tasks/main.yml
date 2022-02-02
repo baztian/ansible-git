@@ -91,3 +91,9 @@
     dest: /usr/local/bin/get_repos.sh
     mode: 0755
     force: yes
+- name: Install merge-prs.sh
+  get_url:
+    url: '{{ merge_prs_url }}'
+    dest: /usr/local/bin/merge-prs.sh
+    mode: 0755
+    force: yes
