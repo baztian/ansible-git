@@ -41,7 +41,7 @@
   become: no
 - name: Add Github apt signing key on remote server to keyring
   apt_key:
-    id: C99B11DEB97541F0
+    id: 23F3D4EA75716059
     keyserver: keyserver.ubuntu.com
   tags: gh_cli
 - name: Extract distribution base name (works on linux mint as well)
