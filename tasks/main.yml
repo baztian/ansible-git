@@ -44,14 +44,9 @@
     id: 23F3D4EA75716059
     keyserver: keyserver.ubuntu.com
   tags: gh_cli
-- name: Extract distribution base name (works on linux mint as well)
-  command: grep -oP '{{ "VERSION" if ansible_distribution == "Debian" else "UBUNTU" }}_CODENAME=\K.*' /etc/os-release
-  register: distro
-  changed_when: False
-  tags: gh_cli
 - name: Add apt repo for github
   apt_repository:
-    repo: deb https://cli.github.com/packages {{ distro.stdout }} main
+    repo: deb https://cli.github.com/packages stable main
     state: present
   tags: gh_cli
 - name: Install github cli (gh) package
