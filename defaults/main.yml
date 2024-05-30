@@ -4,7 +4,6 @@ git_config:
   color.ui: "auto"
   core.fileMode: "false"
   push.default: "simple"
-  pull.rebase: "true" # set up pull to rebase instead of merge
   pull.ff: "only" # Disallows non ff merges on pull. Overrides merge.ff when pulling
   merge.ff: "false" # even create extra merge commit when fast forward merge would be possible
   alias.st: "status -sb"
