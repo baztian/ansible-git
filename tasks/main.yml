@@ -45,6 +45,7 @@
   apt_key:
     id: 23F3D4EA75716059
     keyserver: keyserver.ubuntu.com
+    keyring: /etc/apt/trusted.gpg.d/cli-github.gpg
   tags: gh_cli
 - name: Add apt repo for github
   apt_repository:
@@ -56,32 +57,6 @@
     pkg:
       - gh
   tags: gh_cli
-- name: Install hub
-  unarchive:
-    src: "https://github.com/github/hub/releases/download/v{{ hub_version }}/hub-linux-amd64-{{ hub_version }}.tgz"
-    dest: /opt
-    remote_src: yes
-- name: Symlink default hub
-  file:
-    src: "hub-linux-amd64-{{ hub_version }}"
-    dest: "/opt/hub"
-    state: link
-- name: Symlink hub bin
-  file:
-    src: "/opt/hub/bin/hub"
-    dest: "/usr/local/bin/hub"
-    force: yes
-    state: link
-- name: Add hub git alias and setup bash completion
-  blockinfile:
-    path: ~/.bashrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK git hub"
-    block: |
-      eval "$(hub alias -s)"
-      if [ -f /opt/hub/etc/hub.bash_completion.sh ]; then
-        . /opt/hub/etc/hub.bash_completion.sh
-      fi
-  become: no
 - name: Install get_repos.sh
   get_url:
     url: '{{ get_repos_url }}'
