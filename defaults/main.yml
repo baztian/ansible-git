@@ -4,7 +4,6 @@ git_config:
   color.ui: "auto"
   core.fileMode: "false"
   push.default: "simple"
-  pull.rebase: "true" # set up pull to rebase instead of merge
   pull.ff: "only" # Disallows non ff merges on pull. Overrides merge.ff when pulling
   merge.ff: "false" # even create extra merge commit when fast forward merge would be possible
   alias.st: "status -sb"
@@ -26,6 +25,5 @@ git_config:
   mergetool.keepbackups: "false"
   mergetool.prompt: "false"
 bash_git_prompt_version: 9733b12b3441424ad47d4f42977578e8c9d89438
-hub_version: 2.12.8
 get_repos_url: https://gist.githubusercontent.com/baztian/d6a45e7408d1d4bdae67479a2bda73f4/raw/get_repos.sh
 merge_prs_url: https://gist.githubusercontent.com/baztian/467cc87fca8326faa46cc4a6d4e29d88/raw/merge-prs.sh
