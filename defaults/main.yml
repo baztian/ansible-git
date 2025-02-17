@@ -9,6 +9,8 @@ git_config:
   alias.st: "status -sb"
   alias.tree: "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %Cblue<%an>%Creset' --abbrev-commit --date=local --all"
   alias.last: "log -1 --stat"
+  alias.logs: "log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(green)%an%Creset %s' --stat --color --date=iso"
+  alias.puh: "push -u origin HEAD"
   diff.guitool: "meld"
   difftool.kdiff3.cmd: 'kdiff3 "$LOCAL" "$REMOTE"'
   difftool.kdiff3.trustExitCode: "false"
@@ -24,6 +26,8 @@ git_config:
   mergetool.keeptemporaries: "false"
   mergetool.keepbackups: "false"
   mergetool.prompt: "false"
+  interactive.diffFilter: "git-pager.sh"
 bash_git_prompt_version: 9733b12b3441424ad47d4f42977578e8c9d89438
 get_repos_url: https://gist.githubusercontent.com/baztian/d6a45e7408d1d4bdae67479a2bda73f4/raw/get_repos.sh
 merge_prs_url: https://gist.githubusercontent.com/baztian/467cc87fca8326faa46cc4a6d4e29d88/raw/merge-prs.sh
+git_pager_url: https://gist.githubusercontent.com/baztian/84d1ff3a982e921f492454ebc9edcee8/raw/git-pager.sh

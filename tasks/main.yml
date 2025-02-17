@@ -21,6 +21,12 @@
   with_dict:
     "{{ git_config }}"
   become: no
+- name: Install git_pager.sh
+  get_url:
+    url: '{{ git_pager_url }}'
+    dest: /usr/local/bin/git_pager.sh
+    mode: 0755
+    force: yes
 - name: Clone bash-git-prompt
   git:
     repo: https://github.com/magicmonty/bash-git-prompt.git
