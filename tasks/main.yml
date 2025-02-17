@@ -21,10 +21,10 @@
   with_dict:
     "{{ git_config }}"
   become: no
-- name: Install git_pager.sh
+- name: Install git-pager.sh
   get_url:
     url: '{{ git_pager_url }}'
-    dest: /usr/local/bin/git_pager.sh
+    dest: /usr/local/bin/git-pager.sh
     mode: 0755
     force: yes
 - name: Clone bash-git-prompt
