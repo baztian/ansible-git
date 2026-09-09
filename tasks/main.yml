@@ -49,13 +49,13 @@
   become: no
 - name: Add Github apt signing key on remote server to keyring
   apt_key:
-    id: 23F3D4EA75716059
+    id: 5612B36462313325
     keyserver: keyserver.ubuntu.com
     keyring: /etc/apt/trusted.gpg.d/cli-github.gpg
   tags: gh_cli
 - name: Add apt repo for github
   apt_repository:
-    repo: deb https://cli.github.com/packages stable main
+    repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/cli-github.gpg] https://cli.github.com/packages stable main
     state: present
   tags: gh_cli
 - name: Install github cli (gh) package
